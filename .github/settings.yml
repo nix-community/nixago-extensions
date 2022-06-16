@@ -1,0 +1,67 @@
+labels:
+  - color: '#000000'
+    description: This issue has been abdandoned
+    name: 'Status: Abdandoned'
+  - color: '#4CAF50'
+    description: This issue has been accepted
+    name: 'Status: Accepted'
+  - color: '#81C784'
+    description: This issue is available for assignment
+    name: 'Status: Available'
+  - color: '#F44336'
+    description: This issue is in a blocking state
+    name: 'Status: Blocked'
+  - color: '#A6A6A6'
+    description: This issue is actively being worked on
+    name: 'Status: In Progress'
+  - color: '#F44336'
+    description: This issue is not currently being worked on
+    name: 'Status: On Hold'
+  - color: '#FFEE58'
+    description: This issue is in a pending state
+    name: 'Status: Pending'
+  - color: '#FDD835'
+    description: This issue is pending a review
+    name: 'Status: Review Needed'
+  - color: '#F44336'
+    description: This issue targets a bug
+    name: 'Type: Bug'
+  - color: '#64B5F6'
+    description: This issue targets a new feature
+    name: 'Type: Feature'
+  - color: '#FB8C00'
+    description: This issue targets general maintenance
+    name: 'Type: Maintenance'
+  - color: '#AB47BC'
+    description: This issue contains a question
+    name: 'Type: Question'
+  - color: '#F44336'
+    description: This issue targets a security vulnerability
+    name: 'Type: Security'
+  - color: '#F44336'
+    description: This issue is prioritized as critical
+    name: 'Priority: Critical'
+  - color: '#FB8C00'
+    description: This issue is prioritized as high
+    name: 'Priority: High'
+  - color: '#FFEE58'
+    description: This issue is prioritized as medium
+    name: 'Priority: Medium'
+  - color: '#4CAF50'
+    description: This issue is prioritized as low
+    name: 'Priority: Low'
+  - color: '#4CAF50'
+    name: 'Effort: 1'
+  - color: '#81C784'
+    name: 'Effort: 2'
+  - color: '#FFEE58'
+    name: 'Effort: 3'
+  - color: '#FB8C00'
+    name: 'Effort: 4'
+  - color: '#F44336'
+    name: 'Effort: 5'
+repository:
+  default_branch: master
+  description: Extensions for generating configurations with Nixago
+  name: nixago-exts
+  topics: nix, cuelang, development, developer-tools, development-environment

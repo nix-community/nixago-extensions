@@ -1,0 +1,7 @@
+docs/book
+.direnv
+.conform.yaml
+.justfile
+.prettierignore
+.prettierrc.json
+lefthook.yml
