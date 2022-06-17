@@ -51,9 +51,6 @@
           configs = import ./.config.nix { inherit exts tools; };
         in
         rec {
-          # Expose external API
-          inherit exts;
-
           # Add local tests
           checks = import ./tests { inherit pkgs runTest; };
 
@@ -64,6 +61,6 @@
               packages = tools.all;
             };
           };
-        }
+        } // import ./extensions { inherit pkgs engines; }
       ));
 }

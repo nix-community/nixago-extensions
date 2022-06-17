@@ -16,10 +16,10 @@
 > Extensions for generating configurations with [Nixago][1].
 
 This repository contains extensions for generating configuration files for
-common development tools using [Nixago][1]. The extensions are designed to ease the
-burden of managing multiple template definitions in your local repository. They
-each take a simplified input and produce an output that can be directly passed
-to the Nixago `make` function.
+common development tools using [Nixago][1]. The extensions are designed to ease
+the burden of managing multiple template definitions in your local repository.
+They each take a simplified input and produce an output that can be directly
+passed to the Nixago `make` function.
 
 ## Quick Start
 
@@ -41,7 +41,7 @@ Call one of the extensions and pass the output to Nixago:
 
 ```nix
 {
-  result = nixago.lib.make (nixago-exts.exts.prettier {
+  result = nixago.lib.make (nixago-exts.prettier {
     configData = {
       proseWrap = "always";
       };
@@ -61,8 +61,8 @@ nix flake check
 
 ## Contributing
 
-Check out the [issues][3] for items needing attention or submit
-your own, and then:
+Check out the [issues][3] for items needing attention or submit your own, and
+then:
 
 1. Fork the repo (<https://github.com/nix-community/nixago-extensions/fork>)
 2. Create your feature branch (git checkout -b feature/fooBar)

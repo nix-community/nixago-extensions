@@ -49,7 +49,7 @@ determine which files are excluded when `prettier` is run:
 When calling the extension, change the type to `ignore`:
 
 ```nix
-exts.prettier { configData = []; type = "ignore"; }
+prettier { configData = []; type = "ignore"; }
 ```
 
 [1]: https://prettier.io/
