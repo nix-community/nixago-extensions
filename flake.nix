@@ -2,11 +2,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
+    data-merge.url = "github:divnix/data-merge";
     nixago.url = "github:nix-community/nixago";
     nixago.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils, nixago }:
+  outputs = { self, nixpkgs, flake-utils, nixago, data-merge }:
     rec {
       # Only run CI on Linux
       herculesCI.ciSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -15,7 +16,7 @@
         let
           engines = nixago.engines.${system};
           make = nixago.lib.${system}.make;
-          exts = import ./extensions { inherit pkgs engines; };
+          exts = import ./extensions { inherit pkgs engines data-merge; };
 
           # Setup pkgs
           pkgs = import nixpkgs {
@@ -61,6 +62,6 @@
               packages = tools.all;
             };
           };
-        } // import ./extensions { inherit pkgs engines; }
+        } // import ./extensions { inherit pkgs engines data-merge; }
       ));
 }
