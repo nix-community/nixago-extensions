@@ -218,7 +218,7 @@ App</a>.</p>
 <h2 id="usage-1"><a class="header" href="#usage-1">Usage</a></h2>
 <p>The schema for the configuration file is <a href="https://github.com/probot/settings#usage">detailed here</a>. For example:</p>
 <pre><code class="language-nix">{
-  configData = {
+  data = {
     repository = {
       name = &quot;repo-name&quot;;
       description = &quot;description of repo&quot;;
@@ -298,7 +298,7 @@ task1:
 <p>This extension generates the <code>lefthook.yml</code> file for configuring <a href="https://github.com/evilmartians/lefthook">Lefthook</a>.</p>
 <h2 id="usage-3"><a class="header" href="#usage-3">Usage</a></h2>
 <pre><code class="language-nix">{
-    configData = {
+    data = {
         commit-msg = {
             scripts = {
                 template_checker = { runner = &quot;bash&quot;; };
@@ -416,7 +416,7 @@ determine which files are excluded when <code>prettier</code> is run:</p>
 }
 </code></pre>
 <p>When calling the extension, change the type to <code>ignore</code>:</p>
-<pre><code class="language-nix">prettier { configData = []; type = &quot;ignore&quot;; }
+<pre><code class="language-nix">prettier { data = []; type = &quot;ignore&quot;; }
 </code></pre>
 
                     </main>
