@@ -42,7 +42,7 @@ Call one of the extensions and pass the output to Nixago:
 ```nix
 {
   result = nixago.lib.make (nixago-exts.prettier {
-    configData = {
+    data = {
       proseWrap = "always";
       };
     });

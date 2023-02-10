@@ -1,29 +1,32 @@
-{ pkgs, engines }:
-{ commit ? { }, license ? { } }:
-with pkgs.lib;
-let
+{
+  pkgs,
+  engines,
+}: {
+  commit ? {},
+  license ? {},
+}:
+with pkgs.lib; let
   # Expand out the configuration
-  configData = {
+  data = {
     policies =
       (optional
-        (commit != { })
+        (commit != {})
         {
           type = "commit";
           spec = commit;
-        }) ++
-      (optional
-        (license != { })
+        })
+      ++ (optional
+        (license != {})
         {
           type = "license";
           spec = license;
         });
   };
-in
-{
-  inherit configData;
+in {
+  inherit data;
   format = "yaml";
   output = ".conform.yaml";
   engine = engines.cue {
-    files = [ ./templates/default.cue ];
+    files = [./templates/default.cue];
   };
 }

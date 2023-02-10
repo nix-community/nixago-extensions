@@ -1,8 +1,12 @@
-{ pkgs, engines }:
-{ head ? "", tasks }:
-let
+{
+  pkgs,
+  engines,
+}: {
+  head ? "",
+  tasks,
+}: let
   # Expand configuration data
-  configData = {
+  data = {
     data = {
       inherit head tasks;
     };
@@ -19,13 +23,12 @@ let
     expression = "rendered";
     out = "text";
   };
-in
-{
-  inherit configData;
+in {
+  inherit data;
   format = "text";
   output = ".justfile";
   engine = engines.cue {
     inherit flags postHook;
-    files = [ ./templates/default.cue ];
+    files = [./templates/default.cue];
   };
 }

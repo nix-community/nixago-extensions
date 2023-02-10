@@ -9,7 +9,7 @@ The schema for the configuration file is [detailed here][2]. For example:
 
 ```nix
 {
-  configData = {
+  data = {
     repository = {
       name = "repo-name";
       description = "description of repo";

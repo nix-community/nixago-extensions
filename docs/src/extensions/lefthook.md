@@ -6,7 +6,7 @@ This extension generates the `lefthook.yml` file for configuring [Lefthook][1].
 
 ```nix
 {
-    configData = {
+    data = {
         commit-msg = {
             scripts = {
                 template_checker = { runner = "bash"; };
