@@ -1,7 +1,8 @@
-{ pkgs, engines }:
-configData:
-with pkgs.lib;
-let
+{
+  pkgs,
+  engines,
+}: data:
+with pkgs.lib; let
   pre-commit = pkgs.pre-commit;
 
   # A list of all valid pre-commit stages
@@ -23,30 +24,33 @@ let
         (attrValues data)));
 
   # Builds up simplified config format to the expected format
-  buildData = data:
-    let
-      hooks = attrValues (pkgs.lib.mapAttrs
-        (id: hook: (
-          { inherit id; name = if (hook ? name) then hook.name else id; } // hook
-        ))
-        data);
-    in
-    {
-      repos = [
+  buildData = data: let
+    hooks = attrValues (pkgs.lib.mapAttrs
+      (id: hook: (
         {
-          inherit hooks;
-          repo = "local";
+          inherit id;
+          name =
+            if (hook ? name)
+            then hook.name
+            else id;
         }
-      ];
-    };
+        // hook
+      ))
+      data);
+  in {
+    repos = [
+      {
+        inherit hooks;
+        repo = "local";
+      }
+    ];
+  };
 
   # Build list of stages to install
-  stages = getStages configData;
+  stages = getStages data;
   stagesStr = builtins.concatStringsSep " " stages;
-
-in
-{
-  configData = buildData configData;
+in {
+  data = buildData data;
   format = "yaml";
   output = ".pre-commit-config.yaml";
   hook = {
@@ -67,6 +71,6 @@ in
     '';
   };
   engine = engines.cue {
-    files = [ ./templates/default.cue ];
+    files = [./templates/default.cue];
   };
 }

@@ -1,14 +1,14 @@
-{ pkgs, lib }:
-userData:
-let
+{
+  pkgs,
+  lib,
+}: userData: let
   flags = {
     expression = "rendered";
     out = "text";
   };
-  configData = { data = userData.configData; };
-in
-{
-  inherit configData;
+  data = {inherit data;};
+in {
+  inherit data;
   cue = {
     inherit flags;
   };

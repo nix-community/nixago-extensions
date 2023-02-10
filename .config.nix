@@ -1,5 +1,7 @@
-{ exts, tools }:
-let
+{
+  exts,
+  tools,
+}: let
   colors = {
     black = "#000000";
     blue = "#1565C0";
@@ -143,7 +145,7 @@ let
   # Conform
   conform = {
     commit = {
-      header = { length = 89; };
+      header = {length = 89;};
       conventional = {
         types = [
           "build"
@@ -168,7 +170,7 @@ let
   just = {
     tasks = {
       check = [
-        "@${tools.nixpkgs-fmt.exe} --check flake.nix $(git ls-files '**/*.nix')"
+        "@${tools.alejandra.exe} --check flake.nix $(git ls-files '**/*.nix')"
         "@${tools.prettier.exe} --check ."
         "@${tools.typos.exe}"
         "@nix flake check"
@@ -183,7 +185,7 @@ let
         "@cd docs && mdbook build"
       ];
       fmt = [
-        "@${tools.nixpkgs-fmt.exe} flake.nix $(git ls-files '**/*.nix')"
+        "@${tools.alejandra.exe} flake.nix $(git ls-files '**/*.nix')"
         "@${tools.prettier.exe} -w ."
       ];
     };
@@ -200,8 +202,8 @@ let
     };
     pre-commit = {
       commands = {
-        nixpkgs-fmt = {
-          run = "${tools.nixpkgs-fmt.exe} --check {staged_files}";
+        alejandra = {
+          run = "${tools.alejandra.exe} --check {staged_files}";
           glob = "*.nix";
         };
         prettier = {
@@ -217,12 +219,12 @@ let
 
   # Prettier
   prettier = {
-    configData = {
+    data = {
       proseWrap = "always";
     };
   };
   prettier-ignore = {
-    configData = [
+    data = [
       "docs/book"
       "docs/*.js"
       ".github/settings.yml"
@@ -235,9 +237,7 @@ let
     ];
     type = "ignore";
   };
-
-in
-[
+in [
   (exts.ghsettings github)
   (exts.conform conform)
   (exts.just just)
@@ -245,4 +245,3 @@ in
   (exts.prettier prettier)
   (exts.prettier prettier-ignore)
 ]
-

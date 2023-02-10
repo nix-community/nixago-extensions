@@ -1,7 +1,8 @@
-{ pkgs, engines }:
-configData:
-with pkgs.lib;
-let
+{
+  pkgs,
+  engines,
+}: data:
+with pkgs.lib; let
   lefthook = pkgs.lefthook;
 
   # Add an extra hook for adding required stages whenever the file changes
@@ -12,7 +13,7 @@ let
     "source_dir"
     "source_dir_local"
   ];
-  stages = builtins.attrNames (builtins.removeAttrs configData skip_attrs);
+  stages = builtins.attrNames (builtins.removeAttrs data skip_attrs);
   stagesStr = builtins.concatStringsSep " " stages;
   extra = ''
     # Install configured hooks
@@ -20,13 +21,12 @@ let
       ${lefthook}/bin/lefthook add -a "$stage"
     done
   '';
-in
-{
-  inherit configData;
+in {
+  inherit data;
   format = "yaml";
   output = "lefthook.yml";
-  hook = { inherit extra; };
+  hook = {inherit extra;};
   engine = engines.cue {
-    files = [ ./templates/default.cue ];
+    files = [./templates/default.cue];
   };
 }

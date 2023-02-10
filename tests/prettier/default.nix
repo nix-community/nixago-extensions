@@ -1,9 +1,8 @@
-{ runTest }:
-let
+{runTest}: let
   name = "prettier";
   expected = ./expected.json;
   input = {
-    configData = {
+    data = {
       arrowParens = "always";
       bracketSpacing = true;
       tabWidth = 80;
@@ -18,6 +17,6 @@ let
     };
   };
 in
-runTest {
-  inherit input expected name;
-}
+  runTest {
+    inherit input expected name;
+  }
